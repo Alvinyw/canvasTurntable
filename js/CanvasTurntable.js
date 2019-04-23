@@ -3,10 +3,11 @@
     $.fn.AddCanvasTurntable = function (options) {
         var defaults = {
 			/********** 标签属性设置 **********/
-			sectorText: '',/* 扇形的文本值，应设置成数据形式 */
-			colors: '',/* 插件用到的颜色，应设置成数据形式 */
-			rotateTime: '',/* 转盘旋转一次的时间，单位 s，默认是 6s */
-			resultTitle: ''/* result 描述 */
+			sectorText: '', /* 扇形的文本值，应设置成数据形式 */
+			colors: '', /* 插件用到的颜色，应设置成数据形式 */
+			rotateTime: '', /* 转盘旋转一次的时间，单位 s，默认是 6s */
+			alertText: '', /* 全部选中之后的弹框内容 */
+			resultTitle: '' /* result 描述 */
 			
         },
         settings = $.extend(defaults, options); //把传入的参数 options 合并到 defaults 里并赋给 settings；若 options 里的参数与 defaults 有重复，则 options 会覆盖 defaults 里的参数
@@ -30,6 +31,9 @@
 		
 		//result 描述
 		var resultTitle = settings.resultTitle?settings.resultTitle:"当前已选中的结果如下：";
+		
+		//全部选中之后的弹框内容
+		var alertText = settings.alertText?settings.alertText:"转盘里的内容已全部被选中！";
 		
 		//转盘用到的颜色: [扇形颜色一，扇形颜色二，扇形颜色三，扇形字体颜色，指针字体颜色，指针和边框颜色]
 		//当扇形为奇数时，最后一块扇形的背景色为颜色三
@@ -88,7 +92,7 @@
 					newText.html(sectorText[curIndex]);
 					
 					if(selectedText.length!=0){
-						$("#"+resultID+"").append('、');
+						//$("#"+resultID+"").append('、');
 					}
 					
 					selectedText.push(sectorText[curIndex]);
@@ -97,7 +101,7 @@
 					$("#"+clickBtnID+"").removeAttr("disabled", true);
 				},rotateTime*1000);
 			}else{
-				alert("转盘里的内容已全部被选中！");
+				alert(alertText);
 			}
 		});
 		
@@ -119,7 +123,7 @@
 			canvasWrapper.append(clickBtn);
 			
 			var resultDiv = $("<div id='"+resultID+"' class='result' width='" + canvasWidth +"'>");
-			resultDiv.css({"padding":"10px","border":"2px solid #aaa","background":"#fff","margin-top":"20px","border-radius":"4px"});
+			resultDiv.css({"padding":"10px","border":"2px solid #aaa","margin-top":"20px","border-radius":"4px"});
 			var resultTitleNode = $("<h3>"+resultTitle+"</h3>");
 			resultDiv.append(resultTitleNode);			
 			
