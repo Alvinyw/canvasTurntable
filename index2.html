@@ -1,0 +1,26 @@
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<title>转盘抽奖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<style>
+* { padding: 0px; margin: 0px; font-size: 16px; font-family: "Microsoft YaHei"; }
+body { background:#f5f5f5; }
+</style>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/CanvasTurntable.js"></script>
+</head>
+<body>
+<div id="CanvasTurntable" style="width:400px;"></div>
+<script>
+/* 调用 AddCanvasTurntable 方法 */
+$(function () {
+    $("#CanvasTurntable").AddCanvasTurntable({
+		/********** 标签属性设置 **********/
+		sectorText: ["镇区片","赤中片","东朱片","毛店片","水岸社区"],
+		rotateTime: 2
+	});
+});
+</script>
+</body>
+</html>
