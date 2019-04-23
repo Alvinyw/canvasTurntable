@@ -16,25 +16,7 @@
 </div>
     <script type="text/javascript">
 	//转盘刻画参考 http://www.17sucai.com/pins/14555.html
-	$(document).ready(function(){
-		//旋转角度
-		var angles;
-		
-		//可抽奖次数
-		var clickNum = 5;
-		
-		//旋转次数
-		var rotNum = 0;
-		
-		//中奖公告
-		var notice = null;
-		
-		//转盘用到的颜色: [扇形颜色一，扇形颜色二，扇形字体颜色，指针字体颜色，指针和边框颜色]
-		var color = ["#e9536a","#fbd7a1","#000","#fff","#666"];
-		
-		//扇形的文本内容
-		var sectorText = ["片区一","片区二","片区三","片区四","片区五","片区六","片区七","片区八"];
-			
+	$(document).ready(function(){			
 		//初始化绘制转盘
 		function initTurntable(){
 			var canvas = document.getElementById('myCanvas');
@@ -138,29 +120,41 @@
 			}
 		}
 		
+		
+		//旋转角度
+		var angles;
+		
+		//旋转次数
+		var rotNum = 0;
+		
+		//当前抽中内容
+		var notice = null;
+		
+		//转盘用到的颜色: [扇形颜色一，扇形颜色二，扇形字体颜色，指针字体颜色，指针和边框颜色]
+		var color = ["#e9536a","#fbd7a1","#000","#fff","#666"];
+		
+		//扇形的文本内容
+		var sectorText = ["片区一","片区二","片区三","片区四","片区五","片区六","片区七","片区八"];
+		
+		//已选中过的文本内容
+		var selectedText = new Array();
+		
 		//初始化转盘
 		initTurntable();
 		
 		$('#tupBtn').bind('click',function(){
-			if (clickNum >= 1) {
-				//可抽奖次数减一
-				//clickNum = clickNum-1;
-				//转盘旋转
-				runCup();
-				//转盘旋转过程“开始抽奖”按钮无法点击
-				$('#tupBtn').attr("disabled", true);
-				//旋转次数加一
-				rotNum = rotNum + 1;
-				//“开始抽奖”按钮无法点击恢复点击
-				setTimeout(function(){
-					//alert(notice);
-					console.log(notice);
-					$('#tupBtn').removeAttr("disabled", true);
-				},1000);
-			}
-			else{
-				alert("亲，抽奖次数已用光！");
-			}
+			//转盘旋转
+			runCup();
+			//转盘旋转过程“开始抽奖”按钮无法点击
+			$('#tupBtn').attr("disabled", true);
+			//旋转次数加一
+			rotNum = rotNum + 1;
+			//“开始抽奖”按钮无法点击恢复点击
+			setTimeout(function(){
+				//alert(notice);
+				console.log(notice);
+				$('#tupBtn').removeAttr("disabled", true);
+			},1000);
 		});
 	
 		//转盘旋转
@@ -177,45 +171,46 @@
 		//各奖项对应的旋转角度及中奖公告内容
 		function probability(){
 			//获取随机数
-			var num = parseInt(Math.random()*(7 - 0 + 0) + 0);
+			//var num = parseInt(Math.random()*(7 - 0 + 0) + 0);
+			var num = rnd(0,7);
 			//概率
 			if ( num == 0 ) {
-				angles = 2160 * rotNum + 1800;
+				angles = 6*360 * rotNum + 1800 + num*(360/8);
 				notice = sectorText[0];
 			}
 			//概率
 			else if ( num == 1 ) {
-				angles = 2160 * rotNum + 1845;
+				angles = 6*360 * rotNum + 1800 + num*(360/8);
 				notice = sectorText[7];
 			}
 			//概率
 			else if ( num == 2 ) {
-				angles = 2160 * rotNum + 1890;
+				angles = 6*360 * rotNum + 1800 + num*(360/8);
 				notice = sectorText[6];
 			}
 			//概率
 			else if ( num == 3 ) {
-				angles = 2160 * rotNum + 1935;
+				angles = 6*360 * rotNum + 1800 + num*(360/8);
 				notice = sectorText[5];
 			}
 			//概率
 			else if ( num == 4 ) {
-				angles = 2160 * rotNum + 1980;
+				angles = 6*360 * rotNum + 1800 + num*(360/8);
 				notice = sectorText[4];
 			}
 			//概率
 			else if ( num == 5 ) {
-				angles = 2160 * rotNum + 2025;
+				angles = 6*360 * rotNum + 1800 + num*(360/8);
 				notice = sectorText[3];
 			}
 			//概率
 			else if ( num == 6 ) {
-				angles = 2160 * rotNum + 2070;
+				angles = 6*360 * rotNum + 1800 + num*(360/8);
 				notice = sectorText[2];
 			}
 			//概率
 			else if ( num == 7 ) {
-				angles = 2160 * rotNum + 2115;
+				angles = 6*360 * rotNum + 1800 + num*(360/8);
 				notice = sectorText[1];
 			}
 		}
