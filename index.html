@@ -33,7 +33,7 @@
 		var color = ["#e9536a","#fbd7a1","#000","#fff","#666"];
 		
 		//扇形的文本内容
-		var sectorText = ["片区一","片区二","片区三","片区四","片区五","片区六","片区七","片区八","片区九","片区十"];
+		var sectorText = ["片区一","片区二","片区三","片区四","片区五","片区六","片区七","片区八","片区九","片区十","片区十一","片区十二","片区十三","片区十四","片区十五"];
 		var textNum = sectorText.length;
 		
 		//已选中过的文本内容
@@ -101,8 +101,7 @@
 								
 				//画一个 textNum 等份扇形组成的圆形
 				for (var i = 0; i< textNum; i++){
-					startAngle = Math.PI*2*(i/textNum-1/textNum*2);
-					
+					startAngle = i*Math.PI*2/textNum - Math.PI/2 + Math.PI*2/textNum/2; //保证初始化时指针正好对应在 扇形一 的中间
 					endAngle = startAngle+Math.PI*2*(1/textNum);
 					ctx.save();
 					ctx.beginPath(); 
