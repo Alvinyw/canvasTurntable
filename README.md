@@ -1,4 +1,4 @@
-# Canvas-Turntable：Canvas 根据传入的数据绘制转盘
+# canvasTurntable：用 Canvas 根据传入的数据绘制转盘
 
 ## 一、通过 Node 引用
 
