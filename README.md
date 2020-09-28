@@ -1,4 +1,5 @@
-# canvasTurntable：用 Canvas 根据传入的数据绘制转盘
+# canvasTurntable
+通过 Canvas 根据传入的动态数据绘制大转盘
 
 ## 一、通过 Node 引用
 
