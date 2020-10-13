@@ -21,7 +21,7 @@ export default {
   name: "CanvasTurntable",
   data() {
     return {
-      tooltip: "",
+      canvasTurntable: "",
     };
   },
   mounted() {
@@ -30,7 +30,7 @@ export default {
       sectorText: ["张某某", "李某某", "王某某", "韩某某", "廖某某", "赵某某"],
       rotateTime: 3,
     };
-    this.tooltip = createCanvasTurntable(cfg);
+    this.canvasTurntable = createCanvasTurntable(cfg);
   },
 };
 </script>
@@ -53,7 +53,7 @@ $("#CanvasTurntable").AddCanvasTurntable({
 ## 三、插件可供设置的参数及参数的默认值
 
 ```javascript
-$(targetNode).easyTooltip({
+$(targetNode).AddCanvasTurntable({
     targetNodeId: "CanvasTurntable", /*转盘最外层容器的 ID*/
     /********** 标签属性设置 **********/
     sectorText: '', /* 扇形的文本值，应设置成数组形式 */
